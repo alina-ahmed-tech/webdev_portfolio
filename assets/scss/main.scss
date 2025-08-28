@@ -1,0 +1,162 @@
+@use "variables" as *;
+
+/* Reset / base */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+img { max-width: 100%; height: auto; display:block; }
+
+/* Root variables for runtime use */
+:root {
+  --bg-0: #{$bg-0};
+  --bg-1: #{$bg-1};
+  --surface: #{$surface};
+  --text: #{$text};
+  --muted: #{$text-muted};
+  --accent: #{$accent};
+  --accent-2: #{$accent-2};
+  --glass: #{$glass};
+  --ease: #{$ease};
+  --t-fast: #{$transition-fast};
+  --t-med: #{$transition-med};
+}
+
+/* Page */
+body {
+  background: var(--bg-0);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  min-height: 100vh;
+}
+
+
+/* Header override (Bootstrap defaults are light; make dark) */
+header.navbar {
+  
+background: linear-gradient(
+  90deg,
+  #1a1a2e,
+  #2f2d5e, 
+  #4f4d8a, 
+  #6a67a9,
+  #4f4d8a,
+  #2f2d5e, 
+  #1a1a2e  
+);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+  color: #fff;
+  position: relative;
+  z-index: 10;
+  padding: 2rem 1rem;
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.navbar-brand {
+color: var(--muted); transition: color var(--t-fast) var(--ease);
+    &:hover { color: var(--text); }
+}
+  .navbar-nav .nav-link { color: var(--muted); transition: color var(--t-fast) var(--ease);
+    &:hover { color: var(--text); }
+  }
+
+
+/* Cards */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.45);
+  color: var(--text);
+}
+
+/* Links, buttons, accent styles */
+a { color: var(--accent); text-decoration: none; transition: color var(--t-fast) var(--ease); }
+a:hover { color: var(--accent-2); text-decoration: underline; }
+
+/* Buttons */
+.btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text);
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+  &:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(123,97,255,0.12); }
+}
+.btn-outline-primary {
+  border-color: rgba(123,97,255,0.18);
+  color: var(--accent);
+}
+
+/* Accent glow for interactive focus */
+:focus { outline: none; box-shadow: 0 0 0 4px rgba(123,97,255,0.12); border-radius: 6px; }
+
+/* Footer */
+footer {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.45);
+  color: var(--text);
+}
+
+
+/* Utility: subtle glass surfaces */
+.surface {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.03);
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+/* Text scale */
+.lead { font-size: clamp(1.05rem, 1rem + 0.5vw, 1.15rem); color: var(--text); }
+
+/* ANIMATIONS */
+
+/* fade-in-up (used for elements on scroll) */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px) scale(.998); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* small entrance fade (less movement for micro elements) */
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(12px);
+  will-change: transform, opacity;
+}
+
+[data-animate].in-view {
+  animation: fadeInUp var(--t-med) var(--ease) both;
+}
+
+/* Stagger helper (set data-stagger on container children) */
+[data-stagger] > * {
+  opacity: 0;
+  transform: translateY(10px);
+}
+[data-stagger] > *.in-view {
+  animation: fadeInUp var(--t-med) var(--ease) both;
+  animation-delay: calc(var(--stagger-index, 0) * 90ms);
+}
+
+/* small utility fade */
+.fade { animation: fadeIn 400ms var(--ease) both; }
+
+/* Blog meta (date, author) */
+.post-meta,
+.post-meta a,
+.post-meta .text-muted {
+  color: #f1f1f1 !important; /* light text */
+  font-size: 0.9rem;
+  opacity: 0.85; /* slightly softer than pure white */
+}

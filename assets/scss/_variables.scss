@@ -1,0 +1,13 @@
+// Theme colour system 
+$bg-0: #0f1724;      // page background (dark grey)
+$bg-1: #111827;      // surfaces
+$surface: #0b1220;   // cards, nav background
+$text: #e6eef8;      // primary text (very light)
+$text-muted: #bfcade; // muted text
+$accent: #7b61ff;    // primary purple accent
+$accent-2: #b693ff;  // softer purple for gradients
+$glass: rgba(255,255,255,0.03);
+
+$transition-fast: 180ms;
+$transition-med: 360ms;
+$ease: cubic-bezier(.2,.9,.3,1);

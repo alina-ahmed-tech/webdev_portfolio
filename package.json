@@ -1,0 +1,12 @@
+{
+  "name": "dev-portfolio-classic",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "sass": "^1.77.0"
+  },
+  "scripts": {
+    "dev": "sass --watch assets/scss:assets/css --no-source-map",
+    "build": "sass assets/scss:assets/css --style=compressed --no-source-map"
+  }
+}
