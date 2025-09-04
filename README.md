@@ -10,3 +10,8 @@ Upon switching to this theme:
     3 demo projects (custom post type) one for each ACF (custom field called 'type' which can be either 'WordPress', 'Software' or 'AI').
 
 ACF plug-in is required to be installed. 
+
+
+
+https://github.com/user-attachments/assets/bd14c6ee-57e0-47fd-8b57-6bfb62cb3d0f
+
