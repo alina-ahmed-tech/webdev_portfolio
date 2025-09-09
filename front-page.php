@@ -12,7 +12,7 @@ get_header();
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
       <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <header class="mb-3">
-          <h1 class="display-5">Hello, I'm Alina.</h1>
+          <h1 class="display-5">Hello, I'm Alina!</h1>
         </header>
         <div class="content lead">
           <?php the_content(); ?>
