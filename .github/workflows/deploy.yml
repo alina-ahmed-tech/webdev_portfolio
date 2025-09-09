@@ -17,7 +17,7 @@ jobs:
     - name: 📂 Sync Files
       uses: SamKirkland/web-deploy@v1
       with:
-        target-server: live.learnwebcode.com
+        target-server: alinaahmedtech.com
         remote-user: dh_ihfygj
         private-ssh-key: ${{ secrets.SSH_KEY }}
-        destination-path: /home/dh_ihfygj/live.learnwebcode.com/wp-content/themes/my-awesome-theme/
+        destination-path: /home/dh_ihfygj/alinaahmedtech.com/wp-content/themes/dev-portfolio-classic/
